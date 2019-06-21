@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Schedule</string>
+
+    <string name="main_page_title">我的日程</string>
+    <string name="list_page_title">日程列表</string>
+    <string name="detail_page_title">日程详情</string>
+    <string name="add_page_title">新建日程</string>
+    <string name="list_status_title">日程状态</string>
 </resources>
