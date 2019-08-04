@@ -22,15 +22,17 @@ public class HasStatusScheduleAdapter extends ArrayAdapter<Schedule> {
     public View getView(int position, View convertView, ViewGroup parent) {
         Schedule schedule = getItem(position);
 
-        View view  = LayoutInflater.from(getContext()).inflate(resourceId,null);
+        View view = LayoutInflater.from(getContext()).inflate(resourceId, null);
 
+        TextView scheduleId = view.findViewById(R.id.unClosedId);
         TextView scheduleStatus = view.findViewById(R.id.unclosedStatus);
         TextView scheduleName = view.findViewById(R.id.unclosedName);
         TextView scheduleTime = view.findViewById(R.id.unclosedTime);
 
+        scheduleId.setText(schedule.getId());
         scheduleStatus.setText(schedule.getStatus());
         scheduleName.setText(schedule.getName());
-        scheduleTime.setText("用时："+schedule.getCost());
+        scheduleTime.setText("用时：" + schedule.getCost());
 
         return view;
     }

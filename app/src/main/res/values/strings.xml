@@ -1,9 +1,22 @@
 <resources>
     <string name="app_name">Schedule</string>
-
     <string name="main_page_title">我的日程</string>
     <string name="list_page_title">日程列表</string>
+    <string name="list_status_title">日程状态</string>
     <string name="detail_page_title">日程详情</string>
     <string name="add_page_title">新建日程</string>
-    <string name="list_status_title">日程状态</string>
+    <!--新增页面-->
+    <string name="placeholder_add_title">请输入日程名称</string>
+    <string name="placeholder_add_content">请输入日程内容</string>
+    <string name="placeholder_add_remark">请输入日程备注</string>
+    <string name="button_add_text">创建</string>
+    <string name="button_add_start_text">创建并开始</string>
+    <string name="empty_add_title">日程名称不能为空</string>
+    <string name="success_add_tip">创建成功</string>
+    <!--状态文字-->
+    <string name="status_text1">未开始</string>
+    <string name="status_text2">进行中</string>
+    <string name="status_text3">已暂停</string>
+    <string name="status_text4">未开始</string>
+
 </resources>
