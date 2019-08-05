@@ -28,7 +28,7 @@ public class NoStatusScheduleAdapter extends ArrayAdapter<Schedule> {
         TextView scheduleName = view.findViewById(R.id.closedName);
         TextView scheduleTime = view.findViewById(R.id.closedTime);
 
-        scheduleId.setText(schedule.getId());
+        scheduleId.setText(Integer.toString(schedule.getId()));
         scheduleName.setText(schedule.getName());
         scheduleTime.setText("用时：" + schedule.getCost());
 

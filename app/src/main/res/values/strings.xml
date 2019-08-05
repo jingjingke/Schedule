@@ -13,5 +13,9 @@
     <string name="button_add_start_text">创建并开始</string>
     <string name="empty_add_title">日程名称不能为空</string>
     <string name="success_add_tip">创建成功</string>
-
+    <!--详情页面-->
+    <string name="detail_button_start">开始</string>
+    <string name="detail_button_continue">继续</string>
+    <string name="detail_button_suspend">暂停</string>
+    <string name="detail_button_complete">完成</string>
 </resources>

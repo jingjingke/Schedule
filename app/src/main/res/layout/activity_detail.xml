@@ -23,6 +23,10 @@
         android:id="@+id/scheduleContent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/scheduleRemark"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
     <LinearLayout
         android:orientation="horizontal"
         android:padding="5dp"
@@ -30,28 +34,28 @@
         android:layout_height="wrap_content">
         <Button
             android:id="@+id/scheduleStart"
-            android:text="开始"
+            android:text="@string/detail_button_start"
             android:layout_margin="5dp"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="50dp" />
         <Button
             android:id="@+id/scheduleContinue"
-            android:text="继续"
+            android:text="@string/detail_button_continue"
             android:layout_margin="5dp"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="50dp" />
         <Button
             android:id="@+id/scheduleSuspend"
-            android:text="暂停"
+            android:text="@string/detail_button_suspend"
             android:layout_margin="5dp"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="50dp" />
         <Button
             android:id="@+id/scheduleComplete"
-            android:text="完成"
+            android:text="@string/detail_button_complete"
             android:layout_margin="5dp"
             android:layout_weight="1"
             android:layout_width="0dp"

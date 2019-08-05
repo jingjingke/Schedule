@@ -1,57 +1,35 @@
 package com.jingjingke.schedule;
 
 public class Schedule {
-    private String id;
+    private int id;
     private String name;
-    private String cost;
-    private int status;
-    private String status_name;
     private String content;
     private String remark;
-    private String create_time;
+    private String status;
+    private int sid;
+    private String create;
+    private String cost;
 
-    public Schedule(){
-
+    public Schedule() {
     }
 
-    public Schedule(String id, String name, String cost) {
+    public Schedule(int id, String name, String content, String remark, String status, int sid, String create, String cost) {
         this.id = id;
         this.name = name;
-        this.cost = cost;
-    }
-
-
-    public Schedule(String id, String name, String cost, String status_name) {
-        this.id = id;
-        this.name = name;
-        this.cost = cost;
-        this.status_name = status_name;
-    }
-
-    public Schedule(String id, String name, String content, String remark, String cost, int status,String create_time) {
-        this.id = id;
-        this.name = name;
-        this.cost = cost;
-        this.status = status;
         this.content = content;
         this.remark = remark;
-        this.create_time = create_time;
+        this.status = status;
+        this.sid = sid;
+        this.create = create;
+        this.cost = cost;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
     public String getName() {
         return name;
-    }
-
-    public String getCost() {
-        return cost;
-    }
-
-    public int getStatus() {
-        return status;
     }
 
     public String getContent() {
@@ -62,11 +40,19 @@ public class Schedule {
         return remark;
     }
 
-    public String getCreate_time() {
-        return create_time;
+    public String getStatus() {
+        return status;
     }
 
-    public String getStatus_name() {
-        return status_name;
+    public int getSid() {
+        return sid;
+    }
+
+    public String getCreate() {
+        return create;
+    }
+
+    public String getCost() {
+        return cost;
     }
 }

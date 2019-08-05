@@ -1,11 +1,11 @@
 package com.jingjingke.schedule;
 
-public class Details {
+public class Progress {
     private String startTime;
     private String endingTime;
     private String remark;
 
-    public Details(String startTime, String endingTime, String remark) {
+    public Progress(String startTime, String endingTime, String remark) {
         this.startTime = startTime;
         this.endingTime = endingTime;
         this.remark = remark;

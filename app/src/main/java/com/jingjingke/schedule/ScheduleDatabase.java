@@ -31,14 +31,21 @@ public class ScheduleDatabase {
     public List<Schedule> getUnFinishedList() {
         List<Schedule> list = new ArrayList<Schedule>();
 
-        Cursor cursor = database.rawQuery("select s.id,s.name,s.cost_time,i.name as status_name from schedule as s inner join status as i on s.status_id=i.id where s.status_id<4 order by s.create_time desc", null);
+        Cursor cursor = database.rawQuery("select s.id,s.name,s.content,s.remark,s.create_time,s.cost_time,i.name as status,i.id as sid " +
+                "from schedule as s inner join status as i on s.status_id=i.id where s.status_id<4 order by s.create_time desc", null);
         if (cursor.moveToFirst()) {
             do {
-                String id = cursor.getString(cursor.getColumnIndex("id"));
+                int id = cursor.getInt(cursor.getColumnIndex("id"));
                 String name = cursor.getString(cursor.getColumnIndex("name"));
+                String content = cursor.getString(cursor.getColumnIndex("content"));
+                String remark = cursor.getString(cursor.getColumnIndex("remark"));
                 String cost = cursor.getString(cursor.getColumnIndex("cost_time"));
-                String status = cursor.getString(cursor.getColumnIndex("status_name"));
-                Schedule schedule = new Schedule(id, name, cost, status);
+                String status = cursor.getString(cursor.getColumnIndex("status"));
+                int sid = cursor.getInt(cursor.getColumnIndex("sid"));
+                long create_time = cursor.getLong(cursor.getColumnIndex("create_time"));
+                String create = simpleDateFormat.format(new Date(create_time));
+
+                Schedule schedule = new Schedule(id, name, content, remark, status, sid, create, cost);
                 list.add(schedule);
             } while (cursor.moveToNext());
         }
@@ -47,16 +54,24 @@ public class ScheduleDatabase {
     }
 
     // 根据状态获取列表
-    public List<Schedule> getListByStatus(String status) {
+    public List<Schedule> getListByStatus(String status_name) {
         List<Schedule> list = new ArrayList<Schedule>();
 
-        Cursor cursor = database.rawQuery("select s.id,s.name,s.cost_time from schedule as s inner join status on s.status_id=status.id where status.name=? order by s.create_time desc", new String[]{status});
+        Cursor cursor = database.rawQuery("select s.id,s.name,s.content,s.remark,s.create_time,s.cost_time,i.name as status,i.id as sid " +
+                "from schedule as s inner join status as i on s.status_id=i.id where i.name=? order by s.create_time desc", new String[]{status_name});
         if (cursor.moveToFirst()) {
             do {
-                String id = cursor.getString(cursor.getColumnIndex("id"));
+                int id = cursor.getInt(cursor.getColumnIndex("id"));
                 String name = cursor.getString(cursor.getColumnIndex("name"));
+                String content = cursor.getString(cursor.getColumnIndex("content"));
+                String remark = cursor.getString(cursor.getColumnIndex("remark"));
                 String cost = cursor.getString(cursor.getColumnIndex("cost_time"));
-                Schedule schedule = new Schedule(id, name, cost);
+                String status = cursor.getString(cursor.getColumnIndex("status"));
+                int sid = cursor.getInt(cursor.getColumnIndex("sid"));
+                long create_time = cursor.getLong(cursor.getColumnIndex("create_time"));
+                String create = simpleDateFormat.format(new Date(create_time));
+
+                Schedule schedule = new Schedule(id, name, content, remark, status, sid, create, cost);
                 list.add(schedule);
             } while (cursor.moveToNext());
         }
@@ -95,26 +110,27 @@ public class ScheduleDatabase {
     // 查询日程详情
     public Schedule querySchedule(int schedule_id) {
         Schedule schedule = new Schedule();
-        Cursor cursor = database.rawQuery("select * from schedule where id=? limit 1", new String[]{String.valueOf(schedule_id)});
+        Cursor cursor = database.rawQuery("select s.id,s.name,s.content,s.remark,s.create_time,s.cost_time,i.name as status,i.id as sid " +
+                "from schedule as s inner join status as i on s.status_id=i.id where s.id=? limit 1", new String[]{String.valueOf(schedule_id)});
         if (cursor.moveToFirst()) {
-            String id = cursor.getString(cursor.getColumnIndex("id"));
+            int id = cursor.getInt(cursor.getColumnIndex("id"));
             String name = cursor.getString(cursor.getColumnIndex("name"));
             String content = cursor.getString(cursor.getColumnIndex("content"));
             String remark = cursor.getString(cursor.getColumnIndex("remark"));
-            int status = cursor.getInt(cursor.getColumnIndex("status_id"));
             String cost = cursor.getString(cursor.getColumnIndex("cost_time"));
-
+            String status = cursor.getString(cursor.getColumnIndex("status"));
+            int sid = cursor.getInt(cursor.getColumnIndex("sid"));
             long create_time = cursor.getLong(cursor.getColumnIndex("create_time"));
             String create = simpleDateFormat.format(new Date(create_time));
 
-            schedule = new Schedule(id, name, content, remark, cost, status, create);
+            schedule = new Schedule(id, name, content, remark, status, sid, create, cost);
         }
         return schedule;
     }
 
     // 查询进度列表
-    public List<Details> queryProgress(int schedule_id) {
-        List<Details> list = new ArrayList<Details>();
+    public List<Progress> queryProgress(int schedule_id) {
+        List<Progress> list = new ArrayList<Progress>();
         Cursor cursor = database.rawQuery("select * from progress where schedule_id=? order by start_time desc", new String[]{String.valueOf(schedule_id)});
         if (cursor.moveToFirst()) {
             do {
@@ -128,8 +144,8 @@ public class ScheduleDatabase {
                     end = simpleDateFormat.format(new Date(end_time));
                 }
 
-                Details details = new Details(start, end, remark);
-                list.add(details);
+                Progress progress = new Progress(start, end, remark);
+                list.add(progress);
             } while (cursor.moveToNext());
         }
         return list;

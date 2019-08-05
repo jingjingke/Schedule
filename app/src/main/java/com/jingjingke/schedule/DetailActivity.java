@@ -14,12 +14,13 @@ public class DetailActivity extends Activity {
 
     private ScheduleDatabase database;
 
-    private DetailsAdapter detailsAdapter;
+    private ProgressAdapter mProgressAdapter;
     private ListView listView;
 
     private TextView scheduleTitle;
     private TextView scheduleBuildTime;
     private TextView scheduleContent;
+    private TextView scheduleRemark;
     private Button scheduleStart;
     private Button scheduleContinue;
     private Button scheduleSuspend;
@@ -41,6 +42,7 @@ public class DetailActivity extends Activity {
         scheduleTitle = findViewById(R.id.scheduleTitle);
         scheduleBuildTime = findViewById(R.id.scheduleBuildTime);
         scheduleContent = findViewById(R.id.scheduleContent);
+        scheduleRemark = findViewById(R.id.scheduleRemark);
 
         // 获取按钮
         scheduleStart = findViewById(R.id.scheduleStart);
@@ -130,15 +132,16 @@ public class DetailActivity extends Activity {
         // 获取数据并赋值
         Schedule schedule = database.querySchedule(id);
         scheduleTitle.setText(schedule.getName());
-        scheduleBuildTime.setText("创建时间：" + schedule.getCreate_time());
+        scheduleBuildTime.setText("创建时间：" + schedule.getCreate());
         scheduleContent.setText("内容：" + schedule.getContent());
+        scheduleRemark.setText("备注："+schedule.getRemark());
         // 根本状态设置按钮状态
-        setButtonStatus(schedule.getStatus());
+        setButtonStatus(schedule.getSid());
     }
 
     private void getProgressList() {
         // 获取数据并赋值
-        detailsAdapter = new DetailsAdapter(DetailActivity.this, R.layout.schedule_detail_item, database.queryProgress(id));
-        listView.setAdapter(detailsAdapter);
+        mProgressAdapter = new ProgressAdapter(DetailActivity.this, R.layout.schedule_detail_item, database.queryProgress(id));
+        listView.setAdapter(mProgressAdapter);
     }
 }
