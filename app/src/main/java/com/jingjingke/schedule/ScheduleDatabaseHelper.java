@@ -15,7 +15,7 @@ public class ScheduleDatabaseHelper extends SQLiteOpenHelper {
             "create_time integer," +
             "cost_time integer)";
 
-    public static final String CREATE_REMARK = "create table remark(" +
+    public static final String CREATE_PROGRESS = "create table progress(" +
             "id integer primary key autoincrement," +
             "schedule_id integer," +
             "remark text," +
@@ -36,23 +36,23 @@ public class ScheduleDatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL(CREATE_SCHEDULE);
-        sqLiteDatabase.execSQL(CREATE_REMARK);
+        sqLiteDatabase.execSQL(CREATE_PROGRESS);
         // 初始化中就添加状态表
         sqLiteDatabase.execSQL(CREATE_STATUS);
         ContentValues values = new ContentValues();
-        values.put("name", R.string.status_text1);
+        values.put("name", "未开始");
         values.put("id", 1);
         sqLiteDatabase.insert("status", null, values);
         values.clear();
-        values.put("name", R.string.status_text2);
+        values.put("name", "进行中");
         values.put("id", 2);
         sqLiteDatabase.insert("status", null, values);
         values.clear();
-        values.put("name", R.string.status_text3);
+        values.put("name", "已暂停");
         values.put("id", 3);
         sqLiteDatabase.insert("status", null, values);
         values.clear();
-        values.put("name", R.string.status_text4);
+        values.put("name", "已完成");
         values.put("id", 4);
         sqLiteDatabase.insert("status", null, values);
     }

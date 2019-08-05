@@ -30,7 +30,7 @@ public class HasStatusScheduleAdapter extends ArrayAdapter<Schedule> {
         TextView scheduleTime = view.findViewById(R.id.unclosedTime);
 
         scheduleId.setText(schedule.getId());
-        scheduleStatus.setText(schedule.getStatus());
+        scheduleStatus.setText(schedule.getStatus_name());
         scheduleName.setText(schedule.getName());
         scheduleTime.setText("用时：" + schedule.getCost());
 

@@ -1,8 +1,6 @@
 package com.jingjingke.schedule;
 
 import android.app.Activity;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -10,12 +8,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.util.Date;
-
 public class AddActivity extends Activity {
 
-    private ScheduleDatabaseHelper dbHelper;
-    SQLiteDatabase database;
+    private ScheduleDatabase database;
 
     private EditText addTitle;
     private EditText addContent;
@@ -31,15 +26,14 @@ public class AddActivity extends Activity {
         setContentView(R.layout.activity_add);
 
         // 数据库
-        dbHelper = new ScheduleDatabaseHelper(this, "Schedule.db", null, 1);
-        database = dbHelper.getWritableDatabase();
+        database = new ScheduleDatabase(this);
 
         // 获取输入内容
         addTitle = findViewById(R.id.addTitle);
         addContent = findViewById(R.id.addContent);
         addRemark = findViewById(R.id.addRemark);
 
-        // 获取按钮
+        // 获取按钮并定义事件
         addButton = findViewById(R.id.addSchedule);
         addStartButton = findViewById(R.id.addStartSchedule);
 
@@ -49,7 +43,6 @@ public class AddActivity extends Activity {
                 addSchedule(1);
             }
         });
-
         addStartButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -69,17 +62,12 @@ public class AddActivity extends Activity {
         }
         addButton.setEnabled(false);
         addStartButton.setEnabled(false);
-        long time = new Date().getTime();
-        database.execSQL("insert into schedule (name,content,remark,status_id,create_time,cost_time) values (?,?,?,?,?,?);",
-                new Object[]{title, content, remark, status, time, 0});
+
+        // 向数据库中新增
+        int sid = database.addSchedule(title, content, remark, 1);
+        // 若创建并开始则将新增进度表
         if (status == 2) {
-            Cursor cursor = database.rawQuery("select last_insert_rowid() from schedule", null);
-            int sid = 0;
-            if (cursor.moveToFirst()) {
-                sid = cursor.getInt(0);
-                database.execSQL("insert into remark (schedule_id,start_time,end_time) values (?,?,?);",
-                        new Object[]{sid, time, 0});
-            }
+            database.changeSchedule(sid,2,"");
         }
         Toast.makeText(getApplicationContext(), R.string.success_add_tip, Toast.LENGTH_SHORT).show();
         AddActivity.this.finish();
