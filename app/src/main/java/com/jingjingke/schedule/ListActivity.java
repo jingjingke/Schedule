@@ -1,6 +1,5 @@
 package com.jingjingke.schedule;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -13,7 +12,7 @@ import android.widget.Spinner;
 
 import java.util.List;
 
-public class ListActivity extends Activity {
+public class ListActivity extends CommonActivity {
 
     private NoStatusScheduleAdapter adapter;
     private ListView list;

@@ -7,7 +7,11 @@
 
     <color name="colorBackground">#70b8f0</color>
     <color name="colorBackgroundText">#ffffff</color>
-    <color name="colorNoBackground">#eee</color>
+    <color name="colorNoBackground">#fafafa</color>
     <color name="colorNoBackgroundText">#333333</color>
 
+    <!--渐变色-->
+    <color name="gradient_shadow">#000000</color>
+    <color name="gradient_left">#4b66e9</color>
+    <color name="gradient_right">#819ef5</color>
 </resources>

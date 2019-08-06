@@ -1,6 +1,5 @@
 package com.jingjingke.schedule;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -8,7 +7,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
-public class DetailActivity extends Activity {
+public class DetailActivity extends CommonActivity {
 
     private int id;
 
