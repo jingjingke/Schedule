@@ -1,11 +1,79 @@
 <resources>
-
-    <!-- Base application theme. -->
+    <!--主题基础-->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
-
+    <!--新增按钮-->
+    <style name="AddButton" parent="@style/Widget.AppCompat.Button.Borderless">
+        <item name="android:background">@drawable/button_add_background</item>
+        <item name="android:textColor">@color/colorTheme</item>
+        <item name="android:layout_marginLeft">@dimen/spacing_medium</item>
+        <item name="android:layout_marginRight">@dimen/spacing_medium</item>
+        <item name="android:textSize">@dimen/font_size_medium</item>
+    </style>
+    <!--默认按钮-->
+    <style name="DefaultButton" parent="@style/Widget.AppCompat.Button.Borderless">
+        <item name="android:background">@drawable/button_default_background</item>
+        <item name="android:textColor">@color/colorLight</item>
+        <item name="android:textSize">@dimen/font_size_medium</item>
+        <item name="android:layout_marginTop">@dimen/spacing_medium</item>
+        <item name="android:layout_marginLeft">@dimen/spacing_medium</item>
+    </style>
+    <!--默认输入框-->
+    <style name="EditView">
+        <item name="android:background">@drawable/edit_view_background</item>
+        <item name="android:layout_marginLeft">@dimen/spacing_medium</item>
+        <item name="android:layout_marginRight">@dimen/spacing_medium</item>
+        <item name="android:padding">@dimen/spacing_medium</item>
+        <item name="android:textSize">@dimen/font_size_medium</item>
+        <item name="android:textCursorDrawable">@null</item>
+    </style>
+    <!--包裹列表-->
+    <style name="BlockContentWarp">
+        <item name="android:dividerHeight">@dimen/spacing_medium</item>
+        <item name="android:divider">@null</item>
+        <item name="android:layout_marginLeft">@dimen/spacing_medium</item>
+        <item name="android:layout_marginRight">@dimen/spacing_medium</item>
+        <item name="android:layout_marginTop">@dimen/spacing_medium</item>
+    </style>
+    <!--包裹详情-->
+    <style name="BlockDetailWarp">
+        <item name="android:dividerHeight">@dimen/border_small</item>
+        <item name="android:divider">@color/border</item>
+        <item name="android:layout_marginLeft">@dimen/spacing_medium</item>
+        <item name="android:layout_marginRight">@dimen/spacing_medium</item>
+        <item name="android:layout_marginTop">@dimen/spacing_medium</item>
+        <item name="android:background">@drawable/block_content_background</item>
+        <item name="android:paddingLeft">@dimen/spacing_large</item>
+        <item name="android:paddingRight">@dimen/spacing_large</item>
+    </style>
+    <!--列表-->
+    <style name="BlockContent">
+        <item name="android:background">@drawable/block_content_background</item>
+        <item name="android:padding">@dimen/spacing_large</item>
+    </style>
+    <!--详情-->
+    <style name="BlockDetail">
+        <item name="android:paddingTop">@dimen/spacing_medium</item>
+        <item name="android:paddingBottom">@dimen/spacing_medium</item>
+    </style>
+    <!--状态-->
+    <style name="StatusBlock">
+        <item name="android:textColor">@color/colorLight</item>
+        <item name="android:paddingLeft">@dimen/spacing_small</item>
+        <item name="android:paddingRight">@dimen/spacing_small</item>
+        <item name="android:layout_height">@dimen/font_size_large</item>
+        <item name="android:layout_marginRight">@dimen/spacing_small</item>
+        <item name="android:textSize">@dimen/font_size_small</item>
+    </style>
+    <!--无数据-->
+    <style name="NoDataImage">
+        <item name="android:layout_width">@dimen/no_data_width</item>
+        <item name="android:layout_height">@dimen/no_data_height</item>
+        <item name="android:layout_marginTop">@dimen/no_data_width</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:background">@drawable/ic_no_data</item>
+    </style>
 </resources>

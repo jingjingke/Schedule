@@ -7,12 +7,14 @@ import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 public class MainActivity extends CommonActivity {
 
     private HasStatusScheduleAdapter adapter;
     private ListView list;
+    private ImageView noData;
 
     private ScheduleDatabase database;
 
@@ -27,6 +29,8 @@ public class MainActivity extends CommonActivity {
         // 数据库
         database = new ScheduleDatabase(this);
 
+        // 无数据样式
+        noData = findViewById(R.id.mainNoData);
         // 定义列表事件
         list = findViewById(R.id.homeList);
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -60,7 +64,14 @@ public class MainActivity extends CommonActivity {
 
     private void getList() {
         adapter = new HasStatusScheduleAdapter(MainActivity.this, R.layout.has_status_schedule_item, database.getUnFinishedList());
-        list.setAdapter(adapter);
+        if (adapter.getCount() == 0) {
+            list.setVisibility(View.GONE);
+            noData.setVisibility(View.VISIBLE);
+        } else {
+            list.setAdapter(adapter);
+            list.setVisibility(View.VISIBLE);
+            noData.setVisibility(View.GONE);
+        }
     }
 
 }

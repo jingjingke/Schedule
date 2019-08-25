@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="93dip"
+    android:layout_height="@dimen/head_all"
     android:background="@drawable/bg_head_gradient"
-    android:elevation="20dip"
+    android:elevation="@dimen/font_size_large"
     android:orientation="horizontal"
-    android:paddingTop="20dip"
-    android:paddingBottom="25dip">
+    android:paddingTop="@dimen/head_top"
+    android:paddingBottom="@dimen/head_bottom">
 
     <ImageView
         android:id="@+id/headBackIcon"
@@ -24,8 +24,8 @@
         android:layout_gravity="center"
         android:layout_weight="1"
         android:gravity="center"
-        android:textColor="@color/colorBackgroundText"
-        android:textSize="18sp" />
+        android:textColor="@color/colorLight"
+        android:textSize="@dimen/font_size_large" />
 
     <ImageView
         android:id="@+id/headLeftIcon"

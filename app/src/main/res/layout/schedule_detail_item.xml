@@ -1,20 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/BlockDetail"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="10dp"
-    android:background="#ffffff">
-    <TextView
-        android:id="@+id/startTime"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+    android:orientation="vertical">
+
     <TextView
         android:id="@+id/endingTime"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/font_size_small" />
+
+    <TextView
+        android:id="@+id/startTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_small"
+        android:textSize="@dimen/font_size_small" />
+
     <TextView
         android:id="@+id/detailRemark"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_small"
+        android:textSize="@dimen/font_size_small"
+        android:visibility="gone" />
 </LinearLayout>

@@ -7,6 +7,7 @@ import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
 
@@ -16,6 +17,7 @@ public class ListActivity extends CommonActivity {
 
     private NoStatusScheduleAdapter adapter;
     private ListView list;
+    private ImageView noData;
 
     private ScheduleDatabase database;
 
@@ -29,6 +31,8 @@ public class ListActivity extends CommonActivity {
         // 数据库
         database = new ScheduleDatabase(this);
 
+        // 无数据展示
+        noData = findViewById(R.id.listNoData);
         // 定义列表事件
         list = findViewById(R.id.allList);
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -51,8 +55,8 @@ public class ListActivity extends CommonActivity {
         List<String> options = database.getStatusList();
 
         // 渲染下拉列表
-        ArrayAdapter<String> optionAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, options);
-        optionAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        ArrayAdapter<String> optionAdapter = new ArrayAdapter<String>(this, R.layout.spinner_item, options);
+        optionAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
         final Spinner spinner = findViewById(R.id.status_options);
         spinner.setAdapter(optionAdapter);
 
@@ -73,6 +77,13 @@ public class ListActivity extends CommonActivity {
 
     private void getList(String status) {
         adapter = new NoStatusScheduleAdapter(ListActivity.this, R.layout.no_status_schedule_item, database.getListByStatus(status));
-        list.setAdapter(adapter);
+        if (adapter.getCount() == 0) {
+            list.setVisibility(View.GONE);
+            noData.setVisibility(View.VISIBLE);
+        } else {
+            list.setAdapter(adapter);
+            list.setVisibility(View.VISIBLE);
+            noData.setVisibility(View.GONE);
+        }
     }
 }

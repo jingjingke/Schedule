@@ -1,17 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorPrimary">#4b66e9</color>
+    <color name="colorPrimaryDark">#000</color>
+    <color name="colorAccent">#819ef5</color>
 
+    <color name="colorTheme">#4b66e9</color>
+    <color name="colorThemeSub">#819ef5</color>
+    <color name="colorThemeLight">#e3eaff</color>
 
-    <color name="colorBackground">#70b8f0</color>
-    <color name="colorBackgroundText">#ffffff</color>
-    <color name="colorNoBackground">#fafafa</color>
-    <color name="colorNoBackgroundText">#333333</color>
+    <color name="border">#ddd</color>
 
-    <!--渐变色-->
-    <color name="gradient_shadow">#000000</color>
-    <color name="gradient_left">#4b66e9</color>
-    <color name="gradient_right">#819ef5</color>
+    <color name="colorTit">#111111</color>
+    <color name="colorSub">#555555</color>
+    <color name="colorDes">#999999</color>
+    <color name="colorLight">#ffffff</color>
+
+    <color name="colorGray">#dddddd</color>
+    <color name="colorGreen">#2ee9c4</color>
+    <color name="colorYellow">#ffc02a</color>
+    <color name="colorRed">#ff4d4a</color>
 </resources>

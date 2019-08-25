@@ -12,29 +12,40 @@
         android:layout_height="wrap_content"></com.jingjingke.schedule.HeadLayout>
 
     <RelativeLayout
+        style="@style/BlockContent"
         android:layout_width="match_parent"
-        android:layout_height="40dp">
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/spacing_medium"
+        android:layout_marginRight="@dimen/spacing_medium"
+        android:paddingTop="0dp"
+        android:paddingBottom="@dimen/spacing_medium">
+
         <TextView
-            android:text="@string/list_status_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:textSize="@dimen/font_size_medium"
+            android:text="@string/list_status_title" />
+
         <Spinner
             android:id="@+id/status_options"
-            android:layout_width="150dp"
-            android:layout_marginRight="10dp"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_alignParentRight="true" />
+            android:gravity="center" />
     </RelativeLayout>
 
     <ListView
         android:id="@+id/allList"
+        style="@style/BlockContentWarp"
         android:layout_width="match_parent"
-        android:layout_height="0dip"
-        android:layout_weight="1"
-        android:background="@color/colorNoBackground"></ListView>
+        android:layout_height="0dp"
+        android:layout_weight="1"></ListView>
+
+    <ImageView
+        android:id="@+id/listNoData"
+        style="@style/NoDataImage" />
 
 </LinearLayout>

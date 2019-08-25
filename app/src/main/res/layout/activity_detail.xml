@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     tools:context=".DetailActivity">
 
@@ -11,60 +11,104 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"></com.jingjingke.schedule.HeadLayout>
 
-    <TextView
-        android:id="@+id/scheduleTitle"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    <TextView
-        android:id="@+id/scheduleBuildTime"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    <TextView
-        android:id="@+id/scheduleContent"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    <TextView
-        android:id="@+id/scheduleRemark"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    <LinearLayout
-        android:orientation="horizontal"
-        android:padding="5dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <Button
-            android:id="@+id/scheduleStart"
-            android:text="@string/detail_button_start"
-            android:layout_margin="5dp"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="50dp" />
-        <Button
-            android:id="@+id/scheduleContinue"
-            android:text="@string/detail_button_continue"
-            android:layout_margin="5dp"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="50dp" />
-        <Button
-            android:id="@+id/scheduleSuspend"
-            android:text="@string/detail_button_suspend"
-            android:layout_margin="5dp"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="50dp" />
-        <Button
-            android:id="@+id/scheduleComplete"
-            android:text="@string/detail_button_complete"
-            android:layout_margin="5dp"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="50dp" />
-    </LinearLayout>
+        android:layout_height="wrap_content"
+        android:fillViewport="true">
 
-    <ListView
-        android:id="@+id/detailList"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"></ListView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:descendantFocusability="beforeDescendants"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+
+            android:orientation="vertical">
+
+            <LinearLayout
+                style="@style/BlockContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/spacing_medium"
+                android:layout_marginRight="@dimen/spacing_medium"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/scheduleTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorTit"
+                    android:textSize="@dimen/font_size_medium" />
+
+                <TextView
+                    android:id="@+id/scheduleBuildTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_small"
+                    android:textSize="@dimen/font_size_small" />
+
+                <TextView
+                    android:id="@+id/scheduleContent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_small"
+                    android:textSize="@dimen/font_size_small" />
+
+                <TextView
+                    android:id="@+id/scheduleRemark"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_small"
+                    android:textSize="@dimen/font_size_small" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/spacing_medium"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/scheduleStart"
+                    style="@style/DefaultButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/detail_button_start" />
+
+                <Button
+                    android:id="@+id/scheduleContinue"
+                    style="@style/DefaultButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/detail_button_continue" />
+
+                <Button
+                    android:id="@+id/scheduleSuspend"
+                    style="@style/DefaultButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radius_yellow_background"
+                    android:text="@string/detail_button_suspend" />
+
+                <Button
+                    android:id="@+id/scheduleComplete"
+                    style="@style/DefaultButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radius_red_background"
+                    android:text="@string/detail_button_complete" />
+            </LinearLayout>
+
+            <com.jingjingke.schedule.ScheduleListView
+                android:id="@+id/detailList"
+                style="@style/BlockDetailWarp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"></com.jingjingke.schedule.ScheduleListView>
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

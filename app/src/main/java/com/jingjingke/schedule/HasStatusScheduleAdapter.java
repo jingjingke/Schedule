@@ -31,6 +31,20 @@ public class HasStatusScheduleAdapter extends ArrayAdapter<Schedule> {
 
         scheduleId.setText(Integer.toString(schedule.getId()));
         scheduleStatus.setText(schedule.getStatus());
+        // 为状态上颜色
+        switch (schedule.getSid()) {
+            case 2:
+                scheduleStatus.setBackgroundResource(R.drawable.radius_green_background);
+                break;
+            case 3:
+                scheduleStatus.setBackgroundResource(R.drawable.radius_yellow_background);
+                break;
+            case 4:
+                scheduleStatus.setBackgroundResource(R.drawable.radius_gray_background);
+                break;
+            default:
+                scheduleStatus.setBackgroundResource(R.drawable.radius_gray_background);
+        }
         scheduleName.setText(schedule.getName());
         scheduleTime.setText("用时：" + schedule.getCost());
 

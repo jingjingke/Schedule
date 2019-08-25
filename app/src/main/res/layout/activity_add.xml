@@ -13,44 +13,52 @@
 
     <EditText
         android:id="@+id/addTitle"
-        android:hint="@string/placeholder_add_title"
+        style="@style/EditView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:hint="@string/placeholder_add_title" />
+
     <EditText
         android:id="@+id/addContent"
-        android:hint="@string/placeholder_add_content"
-        android:gravity="top"
-        android:minLines="5"
+        style="@style/EditView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_medium"
+        android:gravity="top"
+        android:hint="@string/placeholder_add_content"
+        android:minLines="5" />
+
     <EditText
         android:id="@+id/addRemark"
-        android:hint="@string/placeholder_add_remark"
-        android:gravity="top"
-        android:minLines="5"
+        style="@style/EditView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_medium"
+        android:gravity="top"
+        android:hint="@string/placeholder_add_remark"
+        android:minLines="5" />
 
     <LinearLayout
-        android:orientation="horizontal"
-        android:padding="5dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/spacing_medium"
+        android:orientation="horizontal">
+
         <Button
             android:id="@+id/addSchedule"
-            android:text="@string/button_add_text"
-            android:layout_margin="5dp"
-            android:layout_weight="1"
+            style="@style/DefaultButton"
             android:layout_width="0dp"
-            android:layout_height="50dp" />
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/button_add_text" />
+
         <Button
             android:id="@+id/addStartSchedule"
-            android:text="@string/button_add_start_text"
-            android:layout_margin="5dp"
-            android:layout_weight="1"
+            style="@style/DefaultButton"
             android:layout_width="0dp"
-            android:layout_height="50dp" />
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/button_add_start_text" />
     </LinearLayout>
-
 
 </LinearLayout>
