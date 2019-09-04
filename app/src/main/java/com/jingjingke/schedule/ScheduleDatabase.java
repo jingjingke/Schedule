@@ -174,7 +174,7 @@ public class ScheduleDatabase {
 
         long cost_time = cursor.getLong(cursor.getColumnIndex("cost_time"));
         if (sid == 2) {
-            cost_time = getLastCostTime(id);
+            cost_time += getLastCostTime(id);
         }
         String cost = getCostText(cost_time);
 
