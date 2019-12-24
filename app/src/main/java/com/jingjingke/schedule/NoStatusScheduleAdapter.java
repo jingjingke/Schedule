@@ -30,7 +30,7 @@ public class NoStatusScheduleAdapter extends ArrayAdapter<Schedule> {
 
         scheduleId.setText(Integer.toString(schedule.getId()));
         scheduleName.setText(schedule.getName());
-        scheduleTime.setText("创建于：" + schedule.getCreate());
+        scheduleTime.setText(getContext().getString(R.string.field_title_time_create) + schedule.getCreate());
 
         return view;
     }

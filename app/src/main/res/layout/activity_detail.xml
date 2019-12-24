@@ -64,6 +64,13 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/spacing_small"
                         android:textSize="@dimen/font_size_small" />
+
+                    <TextView
+                        android:id="@+id/scheduleCost"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_small"
+                        android:textSize="@dimen/font_size_small" />
                 </LinearLayout>
 
                 <ImageView

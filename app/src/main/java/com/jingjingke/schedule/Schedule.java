@@ -8,12 +8,12 @@ public class Schedule {
     private String status;
     private int sid;
     private String create;
-    private String cost;
+    private long cost;
 
     public Schedule() {
     }
 
-    public Schedule(int id, String name, String content, String remark, String status, int sid, String create, String cost) {
+    public Schedule(int id, String name, String content, String remark, String status, int sid, String create, long cost) {
         this.id = id;
         this.name = name;
         this.content = content;
@@ -52,7 +52,7 @@ public class Schedule {
         return create;
     }
 
-    public String getCost() {
+    public long getCost() {
         return cost;
     }
 }

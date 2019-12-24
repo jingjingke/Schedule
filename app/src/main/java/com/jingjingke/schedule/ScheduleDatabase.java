@@ -181,28 +181,13 @@ public class ScheduleDatabase {
         if (sid == 2) {
             cost_time += getLastCostTime(id);
         }
-        String cost = getCostText(cost_time);
+//        String cost = getCostText(cost_time);
 
         long create_time = cursor.getLong(cursor.getColumnIndex("create_time"));
         String create = simpleDateFormat.format(new Date(create_time));
 
-        Schedule schedule = new Schedule(id, name, content, remark, status, sid, create, cost);
+        Schedule schedule = new Schedule(id, name, content, remark, status, sid, create, cost_time);
         return schedule;
-    }
-
-    // 工具--返回用时文本
-    private String getCostText(long time) {
-        long day, hour, minute, second;
-        time = time / 1000;
-        day = time / 86400;
-        hour = (time % 86400) / 3600;
-        minute = (time % 86400 % 3600) / 60;
-        second = (time % 86400 % 3600 % 60);
-        // 过滤无用数据
-        return (day == 0 ? "" : (day + "天")) +
-                (day + hour == 0 ? "" : (hour + "小时")) +
-                (day + hour + minute == 0 ? "" : (minute + "分")) +
-                (day + hour + minute + second == 0 ? "--" : (second + "秒"));
     }
 
 }

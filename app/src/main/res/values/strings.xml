@@ -21,4 +21,11 @@
     <string name="detail_button_continue">继续</string>
     <string name="detail_button_suspend">暂停</string>
     <string name="detail_button_complete">完成</string>
+    <!--字段标题-->
+    <string name="field_title_remark">备注：</string>
+    <string name="field_title_content">内容：</string>
+    <string name="field_title_cost">用时：</string>
+    <string name="field_title_time_start">开始时间：</string>
+    <string name="field_title_time_end">结束时间：</string>
+    <string name="field_title_time_create">创建时间：</string>
 </resources>

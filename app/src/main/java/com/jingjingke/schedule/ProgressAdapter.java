@@ -27,9 +27,9 @@ public class ProgressAdapter extends ArrayAdapter<Progress> {
         TextView endingTime = view.findViewById(R.id.endingTime);
         TextView detailRemark = view.findViewById(R.id.detailRemark);
 
-        startTime.setText("开始时间：" + progress.getStartTime());
-        endingTime.setText("结束时间：" + progress.getEndingTime());
-        detailRemark.setText("备注：" + progress.getRemark());
+        startTime.setText(getContext().getString(R.string.field_title_time_start) + progress.getStartTime());
+        endingTime.setText(getContext().getString(R.string.field_title_time_end) + progress.getEndingTime());
+        detailRemark.setText(getContext().getString(R.string.field_title_remark) + progress.getRemark());
 
         return view;
 

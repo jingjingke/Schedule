@@ -2,6 +2,7 @@ package com.jingjingke.schedule;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -22,6 +23,10 @@ public class DetailActivity extends CommonActivity {
     private TextView scheduleBuildTime;
     private TextView scheduleContent;
     private TextView scheduleRemark;
+    private TextView scheduleCost;
+    private long costTime;
+    private Boolean timeFlag;
+    private int statusId;
     private ImageView scheduEdit;
     private Button scheduleStart;
     private Button scheduleContinue;
@@ -45,6 +50,7 @@ public class DetailActivity extends CommonActivity {
         scheduleBuildTime = findViewById(R.id.scheduleBuildTime);
         scheduleContent = findViewById(R.id.scheduleContent);
         scheduleRemark = findViewById(R.id.scheduleRemark);
+        scheduleCost = findViewById(R.id.scheduleCost);
 
         // 编辑按钮
         scheduEdit = findViewById(R.id.scheduleEdit);
@@ -115,7 +121,14 @@ public class DetailActivity extends CommonActivity {
         getProgressList();
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        timeFlag = false;
+    }
+
     private void setButtonStatus(int status) {
+        statusId = status;
         switch (status) {
             case 1:
                 scheduleStart.setVisibility(View.VISIBLE);
@@ -142,23 +155,45 @@ public class DetailActivity extends CommonActivity {
                 scheduleComplete.setVisibility(View.GONE);
                 break;
         }
-
     }
 
     private void getScheduleInfo() {
         // 获取数据并赋值
         Schedule schedule = database.querySchedule(id);
         scheduleTitle.setText(schedule.getName());
-        scheduleBuildTime.setText("创建时间：" + schedule.getCreate());
-        scheduleContent.setText("内容：" + schedule.getContent());
-        scheduleRemark.setText("备注：" + schedule.getRemark());
+        scheduleBuildTime.setText(getResources().getString(R.string.field_title_time_create) + schedule.getCreate());
+        scheduleContent.setText(getResources().getString(R.string.field_title_content) + schedule.getContent());
+        scheduleRemark.setText(getResources().getString(R.string.field_title_remark) + schedule.getRemark());
         // 根本状态设置按钮状态
         setButtonStatus(schedule.getSid());
+        // 计时跟上定时器
+        costTime = schedule.getCost();
+        scheduleCost.setText(getResources().getString(R.string.field_title_cost) + Tool.getCostText(costTime));
+        // 开启计时线程
+        timeFlag = true;
+        new Thread(new MyThread()).start();
     }
 
     private void getProgressList() {
         // 获取数据并赋值
         mProgressAdapter = new ProgressAdapter(DetailActivity.this, R.layout.schedule_detail_item, database.queryProgress(id));
         listView.setAdapter(mProgressAdapter);
+    }
+
+    public class MyThread implements Runnable {
+        @Override
+        public void run() {
+            while (timeFlag) {
+                try {
+                    Thread.sleep(1000);
+                    if (statusId == 2) {
+                        costTime = costTime + 1000;
+                        scheduleCost.setText(getResources().getString(R.string.field_title_cost) + Tool.getCostText(costTime));
+                    }
+                } catch (Exception e) {
+
+                }
+            }
+        }
     }
 }
