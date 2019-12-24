@@ -11,9 +11,14 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class HeadLayout extends LinearLayout {
+    TextView titleText;
+
     public HeadLayout(final Context context, AttributeSet attrs) {
         super(context, attrs);
-        LayoutInflater.from(context).inflate(R.layout.head,this);
+        LayoutInflater.from(context).inflate(R.layout.head, this);
+
+        // 获取标题
+        titleText = findViewById(R.id.headTitle);
 
         // 定义返回按键事件
         ImageView back = findViewById(R.id.headBackIcon);
@@ -26,8 +31,7 @@ public class HeadLayout extends LinearLayout {
         });
 
         // 获取组件传入的标题文本并赋值
-        String textSelf = getResources().getText(attrs.getAttributeResourceValue(null,"title",0)).toString();
-        TextView titleText = findViewById(R.id.headTitle);
+        String textSelf = getResources().getText(attrs.getAttributeResourceValue(null, "title", 0)).toString();
         titleText.setText(textSelf);
 
         // 获取左则图标进行赋值并绑定事件
@@ -42,9 +46,13 @@ public class HeadLayout extends LinearLayout {
         });
 
         // 判断如果头部是首页标识的话隐藏返回按钮
-        if(attrs.getAttributeResourceValue(null,"title",0) == R.string.main_page_title){
+        if (attrs.getAttributeResourceValue(null, "title", 0) == R.string.main_page_title) {
             back.setVisibility(View.INVISIBLE);
             image.setVisibility(View.VISIBLE);
         }
+    }
+
+    public void setTitle(int resourceId) {
+        titleText.setText(getResources().getString(resourceId));
     }
 }

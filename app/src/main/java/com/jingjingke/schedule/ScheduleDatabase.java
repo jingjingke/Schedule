@@ -83,6 +83,11 @@ public class ScheduleDatabase {
         return sid;
     }
 
+    // 编辑（修改）日程的标题、内容、备注
+    public void updateSchedule(int schedule_id, String title, String content, String remark) {
+        database.execSQL("update schedule set name=?,content=?,remark=? where id=?", new Object[]{title, content, remark, schedule_id});
+    }
+
     // 查询日程详情
     public Schedule querySchedule(int schedule_id) {
         Schedule schedule = new Schedule();

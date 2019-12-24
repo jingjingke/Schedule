@@ -7,6 +7,7 @@
     <dimen name="spacing_small">6dp</dimen>
     <dimen name="spacing_medium">12dp</dimen>
     <dimen name="spacing_large">18dp</dimen>
+    <dimen name="spacing_big">24dp</dimen>
     <dimen name="border_small">1dp</dimen>
     <dimen name="radius_small">5dp</dimen>
     <!--无数据图-->

@@ -1,9 +1,11 @@
 package com.jingjingke.schedule;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -20,6 +22,7 @@ public class DetailActivity extends CommonActivity {
     private TextView scheduleBuildTime;
     private TextView scheduleContent;
     private TextView scheduleRemark;
+    private ImageView scheduEdit;
     private Button scheduleStart;
     private Button scheduleContinue;
     private Button scheduleSuspend;
@@ -43,6 +46,9 @@ public class DetailActivity extends CommonActivity {
         scheduleContent = findViewById(R.id.scheduleContent);
         scheduleRemark = findViewById(R.id.scheduleRemark);
 
+        // 编辑按钮
+        scheduEdit = findViewById(R.id.scheduleEdit);
+
         // 获取按钮
         scheduleStart = findViewById(R.id.scheduleStart);
         scheduleContinue = findViewById(R.id.scheduleContinue);
@@ -50,6 +56,15 @@ public class DetailActivity extends CommonActivity {
         scheduleComplete = findViewById(R.id.scheduleComplete);
 
         // 按钮事件
+        // 编辑
+        scheduEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DetailActivity.this, AddActivity.class);
+                intent.putExtra("id", id);
+                startActivity(intent);
+            }
+        });
         // 开始
         scheduleStart.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,12 +104,15 @@ public class DetailActivity extends CommonActivity {
 
         // 进度列表列表
         listView = findViewById(R.id.detailList);
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
         // 获取上半部日程信息
         getScheduleInfo();
         // 获取下半部细节列表
         getProgressList();
-
     }
 
     private void setButtonStatus(int status) {
@@ -133,7 +151,7 @@ public class DetailActivity extends CommonActivity {
         scheduleTitle.setText(schedule.getName());
         scheduleBuildTime.setText("创建时间：" + schedule.getCreate());
         scheduleContent.setText("内容：" + schedule.getContent());
-        scheduleRemark.setText("备注："+schedule.getRemark());
+        scheduleRemark.setText("备注：" + schedule.getRemark());
         // 根本状态设置按钮状态
         setButtonStatus(schedule.getSid());
     }

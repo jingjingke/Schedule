@@ -5,14 +5,17 @@
     <string name="list_status_title">日程状态</string>
     <string name="detail_page_title">日程详情</string>
     <string name="add_page_title">新建日程</string>
+    <string name="add_page_title2">修改日程</string>
     <!--新增页面-->
     <string name="placeholder_add_title">请输入日程名称</string>
     <string name="placeholder_add_content">请输入日程内容</string>
     <string name="placeholder_add_remark">请输入日程备注</string>
     <string name="button_add_text">创建</string>
     <string name="button_add_start_text">创建并开始</string>
+    <string name="button_add_change">保存</string>
     <string name="empty_add_title">日程名称不能为空</string>
     <string name="success_add_tip">创建成功</string>
+    <string name="success_update_tip">保存成功</string>
     <!--详情页面-->
     <string name="detail_button_start">开始</string>
     <string name="detail_button_continue">继续</string>

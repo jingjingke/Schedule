@@ -7,6 +7,7 @@
     tools:context=".AddActivity">
 
     <com.jingjingke.schedule.HeadLayout
+        android:id="@+id/addScheduleTitle"
         title="@string/add_page_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"></com.jingjingke.schedule.HeadLayout>
@@ -50,7 +51,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/button_add_text" />
+            android:text="@string/button_add_text"
+            android:visibility="gone" />
 
         <Button
             android:id="@+id/addStartSchedule"
@@ -58,7 +60,17 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/button_add_start_text" />
+            android:text="@string/button_add_start_text"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/addStartChange"
+            style="@style/DefaultButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/button_add_change"
+            android:visibility="gone" />
     </LinearLayout>
 
 </LinearLayout>
