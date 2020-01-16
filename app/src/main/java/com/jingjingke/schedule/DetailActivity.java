@@ -164,6 +164,12 @@ public class DetailActivity extends CommonActivity {
         scheduleBuildTime.setText(getResources().getString(R.string.field_title_time_create) + schedule.getCreate());
         scheduleContent.setText(getResources().getString(R.string.field_title_content) + schedule.getContent());
         scheduleRemark.setText(getResources().getString(R.string.field_title_remark) + schedule.getRemark());
+        // 判断若已完成的日程则不可再编辑
+        if (schedule.getSid() == 4) {
+            scheduEdit.setVisibility(View.GONE);
+        } else {
+            scheduEdit.setVisibility(View.VISIBLE);
+        }
         // 根本状态设置按钮状态
         setButtonStatus(schedule.getSid());
         // 计时跟上定时器
