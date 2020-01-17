@@ -10,6 +10,7 @@
     <dimen name="spacing_big">24dp</dimen>
     <dimen name="border_small">1dp</dimen>
     <dimen name="radius_small">5dp</dimen>
+    <dimen name="radius_medium">10dp</dimen>
     <!--无数据图-->
     <dimen name="no_data_width">100dp</dimen>
     <dimen name="no_data_height">65dp</dimen>

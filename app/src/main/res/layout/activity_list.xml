@@ -25,16 +25,16 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
-            android:textSize="@dimen/font_size_medium"
-            android:text="@string/list_status_title" />
+            android:text="@string/list_status_title"
+            android:textSize="@dimen/font_size_medium" />
 
-        <Spinner
-            android:id="@+id/status_options"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:gravity="center" />
+        <TextView
+            android:id="@+id/statusButton"
+            style="@style/StatusText" />
+
+        <ImageView
+            style="@style/StatusIcon"
+            android:src="@drawable/ic_drop_down" />
     </RelativeLayout>
 
     <ListView

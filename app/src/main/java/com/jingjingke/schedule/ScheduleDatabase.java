@@ -57,7 +57,7 @@ public class ScheduleDatabase {
     }
 
     // 获取状态列表
-    public List<String> getStatusList() {
+    public String[] getStatusList() {
         List<String> list = new ArrayList<String>();
 
         Cursor cursor = database.rawQuery("select name from status", null);
@@ -67,7 +67,7 @@ public class ScheduleDatabase {
             } while (cursor.moveToNext());
         }
 
-        return list;
+        return list.toArray(new String[]{});
     }
 
     // 新增日程后返回当前自增id

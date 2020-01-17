@@ -1,23 +1,26 @@
 package com.jingjingke.schedule;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.Spinner;
-
-import java.util.List;
+import android.widget.TextView;
 
 public class ListActivity extends CommonActivity {
 
     private NoStatusScheduleAdapter adapter;
+    private TextView statusButton;
     private ListView list;
     private ImageView noData;
+    private int choice = 0;
+    private String[] statusArray;
 
     private ScheduleDatabase database;
 
@@ -45,34 +48,37 @@ public class ListActivity extends CommonActivity {
             }
         });
 
-        // 状态下拉选择
-        setStatus();
-
-    }
-
-    private void setStatus() {
-        // 获取状态列表数据
-        List<String> options = database.getStatusList();
-
-        // 渲染下拉列表
-        ArrayAdapter<String> optionAdapter = new ArrayAdapter<String>(this, R.layout.spinner_item, options);
-        optionAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
-        final Spinner spinner = findViewById(R.id.status_options);
-        spinner.setAdapter(optionAdapter);
-
-        // 下拉列表事件触发
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        // 状态列表及状态切换
+        statusArray = database.getStatusList();
+        statusButton = findViewById(R.id.statusButton);
+        statusButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                // 获取选择状态并更新列表
-                String text = spinner.getItemAtPosition(i).toString();
-                getList(text);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
+            public void onClick(View v) {
+                createDialog();
             }
         });
+
+        // 获取页面默认数据
+        setStatus(choice);
+    }
+
+    // 创建dialog弹窗
+    private void createDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this).setSingleChoiceItems(statusArray, choice, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                choice = which;
+                setStatus(choice);
+                dialog.dismiss();
+            }
+        });
+        builder.create().show();
+    }
+
+    private void setStatus(int index) {
+        String statusText = statusArray[index];
+        statusButton.setText(statusText);
+        getList(statusText);
     }
 
     private void getList(String status) {
